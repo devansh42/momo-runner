@@ -2,9 +2,9 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
-	"os"
 
 	tfe "github.com/hashicorp/go-tfe"
 )
@@ -13,10 +13,16 @@ const ()
 
 func main() {
 
+	token := flag.String("org_token", "deodoekdoekdo", "Organization Token")
+	flag.Parse()
+	for !flag.Parsed() {
+
+	}
+
 	var (
-		TOKEN         = os.Getenv("TF_ORG_TOKEN")
-		WORKPLACE     = os.Getenv("TF_WORKPLACE")
-		Orgramization = os.Getenv("TF_ORGRAN")
+		TOKEN         = *token
+		WORKPLACE     = "momo-land"
+		Orgramization = "Momo"
 	)
 	config := tfe.DefaultConfig()
 	config.Token = TOKEN
